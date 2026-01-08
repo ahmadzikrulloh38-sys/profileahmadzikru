@@ -5,6 +5,7 @@
     <title>Portfolio | Ahmad Zikrulloh. S.Kom</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,139 +14,450 @@
             font-family: 'Inter', sans-serif;
         }
 
-        body {
-            background-color: #f5f7fa;
-            color: #1f2937;
-            line-height: 1.6;
+        :root {
+            --primary-blue: #0a2463;
+            --secondary-blue: #1e40af;
+            --accent-blue: #3b82f6;
+            --light-blue: #eff6ff;
+            --dark-blue: #001233;
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --gradient: linear-gradient(135deg, #0a2463 0%, #1e40af 50%, #3b82f6 100%);
         }
 
+        body {
+            background-color: var(--dark-blue);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header dengan gradient biru */
         header {
-            background: white;
-            padding: 80px 20px 60px;
+            background: var(--gradient);
+            padding: 100px 20px 80px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            top: -150px;
+            right: -100px;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            bottom: -100px;
+            left: -50px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
         }
 
         header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
             margin-top: 10px;
-            color: #4b5563;
-            font-size: 1.1rem;
+            font-weight: 400;
         }
 
+        .title-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Section Styling */
         section {
-            padding: 70px 20px;
-            max-width: 1100px;
+            padding: 80px 20px;
+            max-width: 1200px;
             margin: auto;
         }
 
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
         h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: 600;
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
         .about {
             text-align: center;
-            max-width: 700px;
+            max-width: 800px;
             margin: auto;
-            font-size: 1.05rem;
-            color: #374151;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            background: rgba(30, 64, 175, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.8;
         }
 
+        /* Projects Grid */
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: 0.3s ease;
+            background: rgba(15, 23, 42, 0.7);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--accent-blue);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
         }
 
         .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #111827;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            font-weight: 600;
         }
 
         .card p {
-            font-size: 0.95rem;
-            color: #4b5563;
+            font-size: 1rem;
+            color: var(--text-gray);
+            flex-grow: 1;
         }
 
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent-blue);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
         footer {
-            background: white;
+            background: rgba(10, 36, 99, 0.9);
             text-align: center;
-            padding: 30px 20px;
-            font-size: 0.9rem;
-            color: #6b7280;
-            border-top: 1px solid #e5e7eb;
+            padding: 40px 20px;
+            font-size: 1rem;
+            color: var(--text-gray);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        @media(max-width: 600px) {
+        footer::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.05);
+            top: -75px;
+            right: -50px;
+        }
+
+        .copyright {
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-icons a {
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media(max-width: 768px) {
             header h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
                 font-size: 2rem;
             }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                padding: 30px 20px;
+            }
+        }
+
+        @media(max-width: 480px) {
+            header {
+                padding: 80px 20px 60px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animasi halus */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Scroll halus */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Ahmad Zikrulloh</h1>
-    <p>Siswa Teknik Jaringan Komputer dan Telekomunikasi<br>SMKS 1 Barunawati</p>
+    <div class="header-content fade-in">
+        <h1>Ahmad Zikrulloh</h1>
+        <p>Siswa Teknik Jaringan Komputer dan Telekomunikasi</p>
+        <div class="title-badge">
+            <span>SMKS 1 Barunawati</span>
+        </div>
+    </div>
 </header>
 
 <section>
-    <h2>Tentang Saya</h2>
-    <p class="about">
-        Saya adalah siswa jurusan Teknik Jaringan Komputer dan Telekomunikasi di SMKS 1 Barunawati yang memiliki minat di bidang jaringan komputer, infrastruktur IT, dan pengembangan website dasar. Saya terbiasa bekerja secara rapi, teliti, dan berorientasi pada solusi.
-    </p>
+    <div class="section-title">
+        <h2>Tentang Saya</h2>
+    </div>
+    <div class="about fade-in delay-1">
+        <p>Saya adalah siswa jurusan Teknik Jaringan Komputer dan Telekomunikasi di SMKS 1 Barunawati yang memiliki minat di bidang jaringan komputer, infrastruktur IT, dan pengembangan website dasar. Saya terbiasa bekerja secara rapi, teliti, dan berorientasi pada solusi.</p>
+        <p style="margin-top: 20px;">Saya memiliki pengalaman praktis dalam berbagai proyek jaringan dan komputer, dengan fokus pada penerapan teknologi yang tepat guna untuk menyelesaikan masalah teknis. Saya selalu berusaha untuk mengembangkan kemampuan teknis dan soft skills secara berkelanjutan.</p>
+    </div>
 </section>
 
 <section>
-    <h2>Projek yang Pernah Dilaksanakan</h2>
+    <div class="section-title">
+        <h2>Projek yang Pernah Dilaksanakan</h2>
+    </div>
     <div class="projects">
-        <div class="card">
+        <div class="card fade-in">
+            <div class="card-icon">
+                <i class="fas fa-desktop"></i>
+            </div>
             <h3>Merakit PC</h3>
-            <p>Melakukan perakitan komputer dari komponen terpisah, memastikan kompatibilitas hardware serta pengujian fungsi sistem.</p>
+            <p>Melakukan perakitan komputer dari komponen terpisah, memastikan kompatibilitas hardware serta pengujian fungsi sistem secara menyeluruh untuk optimalisasi performa.</p>
+            <div class="card-tags">
+                <span class="tag">Hardware</span>
+                <span class="tag">Troubleshooting</span>
+                <span class="tag">Assembly</span>
+            </div>
         </div>
 
-        <div class="card">
+        <div class="card fade-in delay-1">
+            <div class="card-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
             <h3>Instalasi Kabel Jaringan</h3>
-            <p>Melakukan penarikan kabel UTP, crimping konektor RJ45, serta pengujian koneksi menggunakan LAN tester.</p>
+            <p>Melakukan penarikan kabel UTP, crimping konektor RJ45, serta pengujian koneksi menggunakan LAN tester untuk memastikan kualitas koneksi jaringan yang optimal.</p>
+            <div class="card-tags">
+                <span class="tag">Networking</span>
+                <span class="tag">Cabling</span>
+                <span class="tag">UTP</span>
+            </div>
         </div>
 
-        <div class="card">
+        <div class="card fade-in delay-2">
+            <div class="card-icon">
+                <i class="fas fa-project-diagram"></i>
+            </div>
             <h3>Memahami Topologi Jaringan</h3>
-            <p>Menganalisis dan menerapkan topologi star, bus, dan tree sesuai kebutuhan jaringan skala kecil hingga menengah.</p>
+            <p>Menganalisis dan menerapkan topologi star, bus, dan tree sesuai kebutuhan jaringan skala kecil hingga menengah dengan pertimbangan efisiensi dan skalabilitas.</p>
+            <div class="card-tags">
+                <span class="tag">Network Design</span>
+                <span class="tag">Topology</span>
+                <span class="tag">Planning</span>
+            </div>
         </div>
 
-        <div class="card">
+        <div class="card fade-in delay-3">
+            <div class="card-icon">
+                <i class="fas fa-code"></i>
+            </div>
             <h3>Membuat Website Sederhana</h3>
-            <p>Mengembangkan website statis menggunakan HTML dan CSS untuk kebutuhan profil, landing page, dan sistem sederhana.</p>
+            <p>Mengembangkan website statis menggunakan HTML dan CSS untuk kebutuhan profil, landing page, dan sistem sederhana dengan pendekatan responsive design.</p>
+            <div class="card-tags">
+                <span class="tag">Web Development</span>
+                <span class="tag">HTML/CSS</span>
+                <span class="tag">Frontend</span>
+            </div>
         </div>
     </div>
 </section>
 
 <footer>
-    &copy; 2026 Ahmad Zikrulloh — Portfolio
+    <div class="copyright">
+        <p>&copy; 2026 Ahmad Zikrulloh — Portfolio Professional</p>
+        <div class="social-icons">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
+        </div>
+    </div>
 </footer>
+
+<script>
+    // Menambahkan animasi saat scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+    });
+</script>
 
 </body>
 </html>
