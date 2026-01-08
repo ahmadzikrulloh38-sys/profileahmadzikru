@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio | Ahmad Zikrulloh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin-top: 10px;
+            color: #4b5563;
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .about {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+            font-size: 1.05rem;
+            color: #374151;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #4b5563;
+        }
+
+        footer {
+            background: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        @media(max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Ahmad Zikrulloh</h1>
+    <p>Siswa Teknik Jaringan Komputer dan Telekomunikasi<br>SMKS 1 Barunawati</p>
+</header>
+
+<section>
+    <h2>Tentang Saya</h2>
+    <p class="about">
+        Saya adalah siswa jurusan Teknik Jaringan Komputer dan Telekomunikasi di SMKS 1 Barunawati yang memiliki minat di bidang jaringan komputer, infrastruktur IT, dan pengembangan website dasar. Saya terbiasa bekerja secara rapi, teliti, dan berorientasi pada solusi.
+    </p>
+</section>
+
+<section>
+    <h2>Projek yang Pernah Dilaksanakan</h2>
+    <div class="projects">
+        <div class="card">
+            <h3>Merakit PC</h3>
+            <p>Melakukan perakitan komputer dari komponen terpisah, memastikan kompatibilitas hardware serta pengujian fungsi sistem.</p>
+        </div>
+
+        <div class="card">
+            <h3>Instalasi Kabel Jaringan</h3>
+            <p>Melakukan penarikan kabel UTP, crimping konektor RJ45, serta pengujian koneksi menggunakan LAN tester.</p>
+        </div>
+
+        <div class="card">
+            <h3>Memahami Topologi Jaringan</h3>
+            <p>Menganalisis dan menerapkan topologi star, bus, dan tree sesuai kebutuhan jaringan skala kecil hingga menengah.</p>
+        </div>
+
+        <div class="card">
+            <h3>Membuat Website Sederhana</h3>
+            <p>Mengembangkan website statis menggunakan HTML dan CSS untuk kebutuhan profil, landing page, dan sistem sederhana.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    &copy; 2026 Ahmad Zikrulloh — Portfolio
+</footer>
+
+</body>
+</html>
